@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wanna Date?</title>
+    <link rel="icon" type="image/png" href="src/assets/front-stk.webp">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="src/style.css" />
+    
+  </head>
+  <body>
+      <style>
+        body {
+          background-image: url("src/assets/bg.png");
+          background-repeat: no-repeat;
+          background-attachment: fixed;
+          background-size: cover;
+        }
+        .front{
+          background-image: url("src/assets/front-bg.png");
+          background-repeat: no-repeat;
+          background-attachment: fixed;
+          background-size: 100% ;
+          
+        }
+        .hidden {
+          display: none !important;
+        }
+      </style>
+    <div class="card">
+     <div class="outside">
+         <div class="front">
+          <div class="hiee">
+            <p>Hiee Pumpkin !!</p>
+          </div>
+          <div class="front-sticker">
+            <img src="src/assets/front-stk.webp" alt="Hiee Pumpkin !!">
+          </div>
+        </div> 
+        <div class="back">
+          <div class="back-sticker">
+            <img src="src/assets/back.webp" alt="Phool !!">
+          </div>
+        </div>
+      </div>
+      <div class="inside">
+            <div class="Text">
+                <p id="questionText">Wanna Date? pluizz</p>
+            </div>
+        <div class="main-sticker">
+            <img src="src/assets/main-stk.webp" alt="Wanna Date?">
+        </div>
+
+        <!-- Tahap 1: Yes / No -->
+        <div class="buttons" id="choiceButtons">
+          <button class="btn" id="yesButton" onclick="nextPage('yes')">Yes</button>
+          <button class="btn" id="noButton" onclick="nextPage('no')">No</button>
+        </div>
+
+        <!-- Tahap 2: pilih hari (muncul setelah klik Yes) -->
+        <div class="buttons hidden" id="dayButtons">
+          <button class="btn" id="saturdayButton" onclick="pickDay('Sabtu')">Sabtu</button>
+          <button class="btn" id="sundayButton" onclick="pickDay('Minggu')">Minggu</button>
+        </div>
+
+        <script>
+          // Nomor WhatsApp dalam format internasional (tanpa 0 di depan, tanpa +)
+          var WA_NUMBER = "6287784835252";
+
+          function nextPage(choice) {
+            if (choice === 'yes') {
+              document.getElementById('questionText').textContent = 'Mau hari apa? Sabtu / Minggu';
+              document.getElementById('choiceButtons').classList.add('hidden');
+              document.getElementById('dayButtons').classList.remove('hidden');
+            } else if (choice === 'no') {
+              window.location.href = "src/no.html";
+            }
+          }
+
+          function pickDay(day) {
+            var message = "Hai! Aku mau date hari " + day + " :)";
+            window.location.href = "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(message);
+          }
+        </script>
+      </div>
+    </div> 
+    <footer class="footer">
+      <a href="https://github.com/SandeepVashishtha/Wanna-Date">
+        <img src="src/assets/github-mark.png" alt="GitHub Logo" height="42">
+      </a>
+    </footer>
+  </body>
+</html>
